@@ -8,3 +8,27 @@
     background:#000000;
 
 }
+
+/* Aislar los estilos de Editor.js */
+.editor-wrapper h1,
+.editor-wrapper h2,
+.editor-wrapper h3,
+.editor-wrapper h4,
+.editor-wrapper h5,
+.editor-wrapper h6 {
+  all: unset; /* Restablece todos los estilos a los originales */
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Opcional: Si quieres un estilo específico para Editor.js */
+.editor-wrapper h1 {
+  font-size: 1.875rem; /* text-2xl */
+  font-weight: 700;    /* font-bold */
+}
+
+.editor-wrapper h2 {
+  font-size: 1.5rem;   /* text-xl */
+  font-weight: 600;    /* font-semibold */
+}

@@ -8,10 +8,15 @@
     "skipLibCheck": true,
     "baseUrl": "src",
     "paths": {
+      "@/api/*":["api/*"],
+      "@/utils/*":["utils/*"],
       "@/components/*":["components/*"],
       "@/views/*":["views/*"],
       "@/layouts/*":["layouts/*"],
       "@/assets/*":["assets/*"],
+      "@/interfaces/*":["interfaces/*"],
+      "@/stores/*":["stores/*"],
+      "@/services/*":["services/*"],
       "@/constants/*":["constants/*"],
     },
     

@@ -31,6 +31,9 @@ export const Header = () => {
           <Link to='/blog' className="hover:text-neutral-200">
             Blog
           </Link>
+          <Link to='/private/articulo' className="hover:text-neutral-200">
+            Articulo
+          </Link>
         </div>
         {/* RIGHT: BUTTTONS ON MOBILE */}
         <div className="hidden md:flex space-x-4 items-center">

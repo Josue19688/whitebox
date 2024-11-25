@@ -3,6 +3,7 @@
 
 
 //import { userAuthStore } from '@/stores/auth/auth.store'
+import { userAuthStore } from '@/stores/auth/auth.store';
 import axios from 'axios'
 
 
@@ -12,18 +13,19 @@ const backendApi = axios.create({
 
 
 //TODO: Interceptors
-// backendApi.interceptors.request.use(
-//     (config)=>{
-//         const token = userAuthStore.getState().token;
+
+backendApi.interceptors.request.use(
+    (config)=>{
+        const token = userAuthStore.getState().token;
 
         
-//         if(token){
-//             config.headers['Authorization'] =`Bearer ${token}`
-//         }
+        if(token){
+            config.headers['Authorization'] =`Bearer ${token}`
+        }
 
-//         return config;
-//     }
-// )
+        return config;
+    }
+)
 
 
 export {

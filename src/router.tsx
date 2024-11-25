@@ -9,6 +9,10 @@ import PrivateLayout from "./layouts/PrivateLayout";
 import { Articulo } from "./views/private/Articulo";
 import { useEffect } from "react";
 import { IStaticMethods } from "flyonui/flyonui";
+import AuthLayout from "./layouts/AuthLayout";
+import { Login } from "./views/public/Login";
+import { Articulos } from "./views/private/Articulos";
+import { Dashboard } from "./views/private/Dashboard";
 
 
 
@@ -52,9 +56,13 @@ export default function Router() {
                     <Route path="/servicios" element={<ServiciosPage/>} />
                     <Route path="/blog" element={<BlogPage/>} />
                 </Route>
+                <Route element={<AuthLayout />} >
+                    <Route path="/auth/login" element={<Login/>} index/>
+                </Route>
                 <Route element={<PrivateLayout />} >
-                    <Route path="/private/articulo" element={<Articulo/>} index />
-                    
+                    <Route path="/private/dashboard" element={<Dashboard/>} index />
+                    <Route path="/private/articulosAll" element={<Articulos/>} />
+                    <Route path="/private/createArticulo" element={<Articulo/>} />
                 </Route>
             </Routes>
         </BrowserRouter>

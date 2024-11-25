@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Editor from '@/components/private/Editor.js'
 import { useArticuloStore } from '@/stores/articulo/articulo.store';
 import { notyf } from '@/utils/Notif';
-import { validateData } from '@/utils/ValidateEditor';
 
 const containerVariants = {
   hidden: { opacity: 0 },

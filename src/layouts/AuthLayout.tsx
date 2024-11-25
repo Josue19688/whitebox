@@ -1,11 +1,11 @@
 
-import { Navigate, Outlet } from "react-router-dom"
-import { Header } from "@/components/public/Header"
-import { Footer } from "@/components/public/Footer"
+
 import { Loading } from "@/components/public/Loading";
 import { userAuthStore } from "@/stores/auth/auth.store";
+import { Navigate, Outlet } from "react-router-dom"
 
-export default function PublicLayout() {
+export default function AuthLayout() {
+
   const authStatus = userAuthStore(state=>state.status);
   const checkAuthStatus = userAuthStore(state=>state.checkStatus);
 
@@ -19,10 +19,10 @@ export default function PublicLayout() {
   }
   return (
     <>
-      <main className="text-sm text-neutral-300 antialiased">
-        <Header />
+      <main className="text-sm font-sans text-neutral-300 antialiased">
+      
         <Outlet />
-        <Footer/>
+        
       </main>
 
     </>

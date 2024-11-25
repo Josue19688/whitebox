@@ -1,43 +1,30 @@
-
-
-export interface ArticuloData {
-    time: number;
-    blocks: object[];  // O puedes definir un tipo más específico si lo prefieres
-    version: string;
-}
-
-export interface PostArticuloResponse {
-    ok:        boolean;
-    articulos: Articulos;
-}
-
-export interface Articulos {
-    time:      number;
+export interface ArticuloDetailsResponse {
+    id:        string;
+    time:      string;
     blocks:    Block[];
     version:   string;
-    id:        string;
     createdAt: Date;
     updatedAt: Date;
 }
 
 export interface Block {
     id:     string;
-    type:   string;
     data:   Data;
+    type:   string;
     tunes?: Tunes;
 }
 
 export interface Data {
     text?:           string;
     level?:          number;
+    file?:           File;
     caption?:        string;
+    stretched?:      boolean;
     withBorder?:     boolean;
     withBackground?: boolean;
-    stretched?:      boolean;
-    file?:           File;
-    style?:          string;
-    meta?:           DataMeta;
+    meta?:           Meta;
     items?:          Item[];
+    style?:          string;
 }
 
 export interface File {
@@ -45,14 +32,12 @@ export interface File {
 }
 
 export interface Item {
-    content: string;
-    meta:    any;
+    meta:    Meta;
     items:   any[];
+    content: string;
 }
 
-
-export interface DataMeta {
-    counterType?: string;
+export interface Meta {
 }
 
 export interface Tunes {
@@ -62,8 +47,3 @@ export interface Tunes {
 export interface TextAlignment {
     alignment: string;
 }
-
-
-
-
-

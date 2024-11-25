@@ -29,10 +29,7 @@ export class ArticuloService{
       throw new Error('Ocurrió un error inesperado.');
     }
   };
-  
-
-
-    static getArticulos = async()=>{
+  static getArticulos = async()=>{
         try {
             const {data} = await backendApi.get('/articulo');
             return data;
@@ -40,7 +37,7 @@ export class ArticuloService{
             console.log(error)
             throw new Error('Error en la peticion')
         }
-    }
+  }
 
     static getImagen = async (imagenUrl: string): Promise<Blob> => {
         try {

@@ -1,6 +1,8 @@
 // src/stores/articulo.store.ts
 
 import { ArticuloData, Articulos } from '@/interfaces/Articulo.interface';
+import { Articulo } from '@/interfaces/ArticulosAll.interface';
+
 import { ArticuloService } from '@/services/articulo.service';
 import { create, StateCreator } from 'zustand';
 
@@ -8,19 +10,21 @@ import { create, StateCreator } from 'zustand';
 export type ArticuloStatus = 'completado' | 'fallido' | 'pending';
 
 
-  
-
 interface ArticuloState {
     status:ArticuloStatus;
-    articulos:Articulos|null;
+    articulo:Articulos|null;
+    articulos: Articulo[];
     
     createArticulo: (data:ArticuloData) => Promise<void>;
+    fetchArticulos: () => Promise<void>;
+    getArticulo:(id:string)=>Promise<void>;
    
 }
 
 const storeArticulo: StateCreator<ArticuloState> = (set)=>({
     status:'pending',
-    articulos:null,
+    articulo:null,
+    articulos:[],
     createArticulo: async (datos) => {
         try {
             const { ok, articulos } = await ArticuloService.createArticulo(datos);
@@ -28,7 +32,7 @@ const storeArticulo: StateCreator<ArticuloState> = (set)=>({
             if (ok) {
                 set({
                     status: 'completado',
-                    articulos,
+                    articulo:articulos,
                 });
             } else {
                 throw new Error('No se pudo crear el artículo. Respuesta no exitosa.');
@@ -37,7 +41,7 @@ const storeArticulo: StateCreator<ArticuloState> = (set)=>({
         
             set({
                 status: 'fallido',
-                articulos: undefined, 
+                articulo: undefined, 
             });
     
             if (error instanceof Error) {
@@ -48,7 +52,25 @@ const storeArticulo: StateCreator<ArticuloState> = (set)=>({
 
         }
     },
-    
+    fetchArticulos: async () => {
+        try {
+            const {ok, articulos} = await ArticuloService.getArticulos();
+            if (ok) {
+                set({ status:'completado', articulos });
+            }
+        } catch (error) {
+            console.error('Error al obtener los artículos:', error);
+        }
+    },
+    getArticulo: async(id:string)=>{
+        try {
+            const articulo = await ArticuloService.getArticulo(id);
+            set({status:'completado',articulo})
+        } catch (error) {
+            console.error('Error al obtener el articulo:', error);
+            set({ status: 'fallido', articulo: null });
+        }
+    }
     
     
 

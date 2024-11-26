@@ -24,6 +24,7 @@
     "@sotaproject/strikethrough": "^1.0.1",
     "@tailwindcss/typography": "^0.5.15",
     "axios": "^1.7.7",
+    "date-fns": "^4.1.0",
     "editorjs-alert": "^1.1.4",
     "editorjs-change-case": "^0.0.3",
     "editorjs-html": "^3.4.3",

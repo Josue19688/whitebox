@@ -17,7 +17,7 @@ export default function PrivateLayout() {
   }
 
   if(authStatus==='unautorized'){
-    return <Navigate to={'/auth/login'}/>
+    return <Navigate to={'/'}/>
   }
 
 

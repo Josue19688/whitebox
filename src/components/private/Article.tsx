@@ -1,12 +1,10 @@
 import React from 'react';
-import { Block, ArticleData } from './types';
+
 
 
 
   
-interface ArticleProps {
-  data: ArticleData;
-}
+
 
 const formatTime = (timestamp: string) => {
   const date = new Date(parseInt(timestamp));
@@ -25,8 +23,8 @@ const cleanText = (text: string) => {
   };
   
 
-const Article: React.FC<ArticleProps> = ({ data }) => {
-  const renderBlock = (block: Block) => {
+const Article: React.FC<any> = ({ data }) => {
+  const renderBlock = (block: any) => {
     const { type, data: blockData } = block;
 
     switch (type) {
@@ -60,7 +58,7 @@ const Article: React.FC<ArticleProps> = ({ data }) => {
       case 'list':
         return (
           <ul key={block.id} className="list-disc ml-6 my-4">
-            {blockData.items?.map((item, index) => (
+            {blockData.items?.map((item:any, index:any) => (
               <li key={index}>{item.content}</li>
             ))}
           </ul>
@@ -94,15 +92,15 @@ const Article: React.FC<ArticleProps> = ({ data }) => {
           <table key={block.id} className="table-auto w-full my-4 border-collapse">
             <thead>
               <tr>
-                {blockData.content?.[0].map((cell, index) => (
+                {blockData.content?.[0].map((cell:any, index:any) => (
                   <th key={index} className="border px-4 py-2">{cell}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {blockData.content?.slice(1).map((row, index) => (
+              {blockData.content?.slice(1).map((row:any, index:any) => (
                 <tr key={index}>
-                  {row.map((cell, index) => (
+                  {row.map((cell:any, index:any) => (
                     <td key={index} className="border px-4 py-2">{cell}</td>
                   ))}
                 </tr>
@@ -122,7 +120,7 @@ const Article: React.FC<ArticleProps> = ({ data }) => {
         <div className="text-center">
           <p className="text-sm text-gray-600">{`Publicado: ${formatTime(data.time)}`}</p>
         </div>
-        {data.blocks.map((block) => renderBlock(block))}
+        {data.blocks.map((block:any) => renderBlock(block))}
       </div>
     </div>
   );

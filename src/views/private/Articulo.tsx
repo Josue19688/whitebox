@@ -35,7 +35,7 @@ export const Articulo = () => {
   const [data, setData] = useState(INITIAL_DATA);
 
 
-  const handleSubmit = async (data) => {
+  const handleSubmit = async (data:any) => {
     try {
       //validateData(data);
       await createArticulo(data);

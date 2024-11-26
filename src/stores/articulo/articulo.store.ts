@@ -1,5 +1,6 @@
 // src/stores/articulo.store.ts
 
+import { Article } from '@/interfaces/ArticlePublicResponse';
 import { ArticuloData, Articulos } from '@/interfaces/Articulo.interface';
 import { Articulo } from '@/interfaces/ArticulosAll.interface';
 
@@ -14,17 +15,20 @@ interface ArticuloState {
     status:ArticuloStatus;
     articulo:Articulos|null;
     articulos: Articulo[];
+    articles:Article[];
     
     createArticulo: (data:ArticuloData) => Promise<void>;
     fetchArticulos: () => Promise<void>;
+    fetchArticlesPublic: () => Promise<void>;
     getArticulo:(id:string)=>Promise<void>;
-   
+    clearArticulo:()=>Promise<void>;
 }
 
 const storeArticulo: StateCreator<ArticuloState> = (set)=>({
     status:'pending',
     articulo:null,
     articulos:[],
+    articles:[],
     createArticulo: async (datos) => {
         try {
             const { ok, articulos } = await ArticuloService.createArticulo(datos);
@@ -62,6 +66,16 @@ const storeArticulo: StateCreator<ArticuloState> = (set)=>({
             console.error('Error al obtener los artículos:', error);
         }
     },
+    fetchArticlesPublic: async () => {
+        try {
+            const {ok, articles} = await ArticuloService.getArticulosPublic();
+            if (ok) {
+                set({ status:'completado', articles });
+            }
+        } catch (error) {
+            console.error('Error al obtener los artículos:', error);
+        }
+    },
     getArticulo: async(id:string)=>{
         try {
             const articulo = await ArticuloService.getArticulo(id);
@@ -70,6 +84,9 @@ const storeArticulo: StateCreator<ArticuloState> = (set)=>({
             console.error('Error al obtener el articulo:', error);
             set({ status: 'fallido', articulo: null });
         }
+    },
+    clearArticulo:async()=>{
+        set({ status: 'pending', articulo: null });
     }
     
     

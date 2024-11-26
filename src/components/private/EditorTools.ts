@@ -15,7 +15,7 @@ import ChangeCase from "editorjs-change-case"
 import ColorPlugin from "editorjs-text-color-plugin"
 
 
-const customUploader = async (file) => {
+const customUploader = async (file:any) => {
   const formData = new FormData();
   formData.append('files', file); // Asegúrate de usar el campo esperado
 

@@ -45,6 +45,7 @@ const storeApi: StateCreator<AuthState> = (set)=>({
             set({status:'authorized', token, usuario:user})
         } catch (error) {
             set({status:'unautorized', token:undefined, usuario:undefined});
+            localStorage.removeItem('auth-storage'); 
             throw new Error('Credenciales Incorrectas!')
             
         }
@@ -52,6 +53,7 @@ const storeApi: StateCreator<AuthState> = (set)=>({
 
     logoutUser: ()=> {
         set({status:'unautorized', token:undefined, usuario:undefined});
+        localStorage.removeItem('auth-storage');
     },
 
 })

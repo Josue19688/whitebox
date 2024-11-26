@@ -1,6 +1,7 @@
 import { useArticuloStore } from "@/stores/articulo/articulo.store";
 import React, { useEffect } from "react";
 import Article from "./Article";
+import { Loading } from "../public/Loading";
 
 interface ModalProps {
   isOpen: boolean; // Controla si el modal está visible
@@ -12,14 +13,15 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, articuloId }) => {
 
     const articulo = useArticuloStore((state) => state.articulo);
     const fetchArticulo = useArticuloStore((state) => state.getArticulo);
+    const clearArticulo = useArticuloStore((state) => state.clearArticulo);
 
     useEffect(() => {
         // Si `id` es `undefined`, asignamos un valor predeterminado vacío o mostramos un mensaje de error.
-       
+        clearArticulo();
         if (articuloId) {
           fetchArticulo(articuloId);
         }
-      }, [fetchArticulo, articuloId]);
+      }, [fetchArticulo, articuloId,clearArticulo]);
   
   return (
     <div
@@ -47,7 +49,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, articuloId }) => {
             {articulo ? (
               <Article data={articulo} />
             ) : (
-              <p>No se ha seleccionado ningún artículo.</p>
+              <Loading/>
             )}
           </div>
           <div className="modal-footer">

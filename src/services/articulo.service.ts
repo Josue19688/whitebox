@@ -59,5 +59,13 @@ export class ArticuloService{
         }
     }
 
-   
+    static getArticulosPublic = async()=>{
+      try {
+          const {data} = await backendApi.get('/articulo/public');
+          return data;
+      } catch (error) {
+          console.log(error)
+          throw new Error('Error en la peticion')
+      }
+}
 }

@@ -19,9 +19,12 @@ const cleanText = (text: string) => {
       .replace(/<code>/g, '<span class="text-sm font-mono bg-gray-200 px-1">')  // Código con estilo
       .replace(/<\/code>/g, '</span>')  // Cierre de la etiqueta <code>
       .replace(/<b>/g, '<span class="font-bold">')  // <b> se convierte en <span class="font-bold">
-      .replace(/<\/b>/g, '</span>');  // Cierre de la etiqueta <b>
+      .replace(/<\/b>/g, '</span>') // Cierre de la etiqueta <b>
+      .replace(/<li data-empty="false">/g, '<span>')  // <b> se convierte en <span class="font-bold">
+      .replace(/<\/li>/g, '</span>');  // Cierre de la etiqueta <b>
   };
   
+ 
 
 const Article: React.FC<any> = ({ data }) => {
   const renderBlock = (block: any) => {

@@ -12,19 +12,37 @@ const formatTime = (timestamp: string) => {
 };
 
 const cleanText = (text: string) => {
-    // Reemplaza &nbsp; por un espacio regular
-    // Convierte las etiquetas <code> y <b> en su formato adecuado
-    return text
-      .replace(/&nbsp;/g, ' ')  // Reemplaza &nbsp; por un espacio regular
-      .replace(/<code>/g, '<span class="text-sm font-mono bg-gray-200 px-1">')  // Código con estilo
-      .replace(/<\/code>/g, '</span>')  // Cierre de la etiqueta <code>
-      .replace(/<b>/g, '<span class="font-bold">')  // <b> se convierte en <span class="font-bold">
-      .replace(/<\/b>/g, '</span>') // Cierre de la etiqueta <b>
-      .replace(/<li data-empty="false">/g, '<span>')  // <b> se convierte en <span class="font-bold">
-      .replace(/<\/li>/g, '</span>');  // Cierre de la etiqueta <b>
+  // Diccionario de mapeo de etiquetas a estilos
+  const tagMap: Record<string, string> = {
+      '&nbsp;': ' ',
+      '<code>': '<span class="text-sm font-mono bg-gray-200 px-1">',
+      '</code>': '</span>',
+      '<b>': '<span class="font-bold">',
+      '</b>': '</span>',
+      '<i>': '<span class="italic">',
+      '</i>': '</span>',
+      '<ul>': '<ul class="list-disc ml-5 my-2">',
+      '</ul>': '</ul>',
+      '<li>': '<li class="my-1">',
+      '</li>': '</li>',
   };
+
+  // Manejamos etiquetas de encabezado dinámicamente
+  for (let i = 1; i <= 6; i++) {
+      tagMap[`<h${i}>`] = `<h${i} class="font-bold text-lg my-2">`;
+      tagMap[`</h${i}>`] = `</h${i}>`;
+  }
+
+  // Reemplazamos las etiquetas dinámicamente usando el diccionario
+  return Object.keys(tagMap).reduce((processedText, tag) => {
+      const replacement = tagMap[tag];
+      return processedText.replace(new RegExp(tag, 'g'), replacement);
+  }, text);
+};
+
   
- 
+  // .replace(/<li data-empty="false">/g, '<span>')  
+  // .replace(/<\/li>/g, '</span>');  
 
 const Article: React.FC<any> = ({ data }) => {
   const renderBlock = (block: any) => {
@@ -61,10 +79,10 @@ const Article: React.FC<any> = ({ data }) => {
       case 'list':
         return (
           <ul key={block.id} className="list-disc ml-6 my-4">
-            {blockData.items?.map((item:any, index:any) => (
-              <li key={index}>{item.content}</li>
+            {blockData.items?.map((item: any, index: any) => (
+                <li key={index} dangerouslySetInnerHTML={{ __html: cleanText(item.content || '') }} />
             ))}
-          </ul>
+        </ul>
         );
 
       case 'quote':

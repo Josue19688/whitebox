@@ -1,11 +1,6 @@
 import React from 'react';
 
 
-
-
-  
-
-
 const formatTime = (timestamp: string) => {
   const date = new Date(parseInt(timestamp));
   return date.toLocaleString(); // Formatea a una fecha legible
@@ -40,9 +35,6 @@ const cleanText = (text: string) => {
   }, text);
 };
 
-  
-  // .replace(/<li data-empty="false">/g, '<span>')  
-  // .replace(/<\/li>/g, '</span>');  
 
 const Article: React.FC<any> = ({ data }) => {
   const renderBlock = (block: any) => {
@@ -137,7 +129,7 @@ const Article: React.FC<any> = ({ data }) => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="article">
+      <div className="article text-neutral-500">
         <div className="text-center">
           <p className="text-sm text-gray-600">{`Publicado: ${formatTime(data.time)}`}</p>
         </div>

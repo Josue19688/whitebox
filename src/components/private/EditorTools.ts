@@ -19,7 +19,7 @@ const customUploader = async (file:any) => {
   const formData = new FormData();
   formData.append('files', file); // Asegúrate de usar el campo esperado
 
-  const response = await fetch("http://localhost:3000/files/uploads/editor", {
+  const response = await fetch("https://backendpagina-production.up.railway.app/files/uploads/editor", {
     method: 'POST',
     body: formData,
   });

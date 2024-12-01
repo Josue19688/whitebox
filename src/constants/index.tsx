@@ -22,13 +22,13 @@ import {
 } from "@remixicon/react";
 
 export const HERO_CONTENT = {
-  badgeText: "🚀 WHITEBOX: Tu Aliado en Capacitación y Soluciones Informáticas",
+  badgeText: "🚀Tu Aliado en Capacitación y Soluciones Informáticas",
   mainHeading: "Transformando \n El Futuro Tecnológico+",
   subHeading:
-    "En WithBox, ofrecemos capacitaciones y servicios especializados en informática 💻, Diseño y Desarrollo de Software, comercio electrónico 🛒, redes 🌐 y ciberseguridad 🔒. Nos enfocamos en soluciones innovadoras y personalizadas para potenciar tus habilidades y asegurar el éxito de tu negocio 🚀. Confía en nosotros para llevar tus conocimientos y operaciones al siguiente nivel.",
+    "Ofrecemos capacitaciones y servicios especializados en informática 💻, Diseño y Desarrollo de Software, comercio electrónico 🛒, redes 🌐 y ciberseguridad 🔒. Nos enfocamos en soluciones innovadoras y personalizadas para potenciar tus habilidades y asegurar el éxito de tu negocio 🚀. Confía en nosotros para llevar tus conocimientos y operaciones al siguiente nivel.",
   callToAction: {
     primary: "Cotizar proyecto!",
-    secondary: "Agendar una cita!",
+    secondary: "Asesoria Gratuita!",
   },
   trustedByText: "Conectando con el Futuro Tecnológico de Nuestros Clientes 🌐🚀",
 };

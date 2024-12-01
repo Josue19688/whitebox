@@ -1,21 +1,21 @@
 
-import {HERO_CONTENT} from '@/constants/index'
+import { HERO_CONTENT } from '@/constants/index'
 
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 import { KeyFeatures } from '@/components/public/KeyFeatures'
 import { Testinomial } from '@/components/public/Testimonial'
 import { Future } from '@/components/public/Future'
 import { Hero } from '@/components/public/Hero'
 
 
-const containerVariants={
-  hidden:{opacity:0},
-  visible:{opacity:1, transition:{stranggerChildren:0.2}}
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { stranggerChildren: 0.2 } }
 }
 
-const fadeInUp={
-  hidden:{opacity:0, y:20},
-  visible:{opacity:1, y:0, transition:{duration:0.6}}
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 }
 
 // const fadeIn={
@@ -27,71 +27,56 @@ const fadeInUp={
 export function HomePage() {
   return (
     <>
-      <motion.section 
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className="pt-28  lg:pt-48">
+      <motion.section
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="pt-28  lg:pt-48">
         <div className="max-w-7xl mx-auto px-4 flex flex-col items-center text-center">
           <motion.div
-          variants={fadeInUp}
-           className="mb-8 border border-neutral-800 px-3 py-2 rounded-full text-xs">
-          {HERO_CONTENT.badgeText}
+            variants={fadeInUp}
+            className="mb-8 border border-neutral-800 px-3 py-2 rounded-full text-xs">
+            {HERO_CONTENT.badgeText}
           </motion.div>
-          <Hero/>
-     
-{/* <motion.h1 
-  variants={fadeInUp} 
-  className="text-5xl lg:text-8xl my-4 font-semibold tracking-tighter bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-orange-500 bg-clip-text text-transparent relative"
->
-  <motion.img
-    src={logo}
-    alt="logo"
-    className="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 shadow-xl rounded-full bg-transparent transition-all duration-300"
-    whileHover={{
-      scale: 3, 
-      zIndex: 10,  
-      transition: { duration: 0.3 }  
-    }}
-    initial={{ scale: 1 }}  
-   
-  />
-</motion.h1> */}
+          <Hero />
+
+
           <motion.p variants={fadeInUp} className="mt-6 text-neutral-400 max-w-xl">
-          {HERO_CONTENT.subHeading}
+            {HERO_CONTENT.subHeading}
           </motion.p>
-          <motion.div variants={fadeInUp} className="mt-6 space-x-4">
-            <a href="#" className="inline-block bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-orange-500 text-white py-3 px-6 rounded-lg font-medium">
-            {HERO_CONTENT.callToAction.primary}
+          <motion.div
+            variants={fadeInUp}
+            className="mt-6 flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 items-center"
+          >
+            <a
+              href="#"
+              className="inline-block bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-orange-500 text-white py-3 px-6 rounded-lg font-medium text-center"
+            >
+              {HERO_CONTENT.callToAction.primary}
             </a>
-            <a href="#" className="inline-block border border-gray-500 hover:border-gray-400 text-white py-3 px-6 rounded-lg font-medium">
-            {HERO_CONTENT.callToAction.secondary}
+            <a
+              href="#"
+              className="inline-block border border-gray-500 hover:border-gray-400 text-white py-3 px-6 rounded-lg font-medium text-center"
+            >
+              {HERO_CONTENT.callToAction.secondary}
             </a>
           </motion.div>
+
 
           <div className="py-10 ">
             <motion.p variants={fadeInUp} className="text-gray-400 text-center mb-8">
-            {HERO_CONTENT.trustedByText}
+              {HERO_CONTENT.trustedByText}
             </motion.p>
-            {/* <motion.div variants={fadeInUp} className="flex flex-wrap justify-center gap-8">
-              {BRAND_LOGOS.map((logo, index)=>(
-                <img key={index} src={logo.src} alt="logo"
-                className='h-8'
-                 />
-              ))}
-            </motion.div> */}
+
           </div>
 
-          {/* <motion.div variants={fadeInUp} className='mt-12'>
-              <img src={heroImagen} alt="imgen"
-              className='w-f4 h-auto rounded-3xl border border-neutral-800 mb-20' />
-          </motion.div> */}
-         
+
+
         </div>
       </motion.section>
-      <Future/>
-      <KeyFeatures/>
-      <Testinomial/>
+      <Future />
+      <KeyFeatures />
+      <Testinomial />
     </>
   );
 }

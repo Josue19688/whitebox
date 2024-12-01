@@ -5,6 +5,7 @@ import {motion} from 'framer-motion'
 import { KeyFeatures } from '@/components/public/KeyFeatures'
 import { Testinomial } from '@/components/public/Testimonial'
 import { Future } from '@/components/public/Future'
+import { Hero } from '@/components/public/Hero'
 
 
 const containerVariants={
@@ -37,16 +38,25 @@ export function HomePage() {
            className="mb-8 border border-neutral-800 px-3 py-2 rounded-full text-xs">
           {HERO_CONTENT.badgeText}
           </motion.div>
-          <motion.h1   variants={fadeInUp} 
-          className="text-5xl lg:text-8xl my-4 font-semibold tracking-tighter bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-orange-500 bg-clip-text text-transparent">
-          {HERO_CONTENT.mainHeading.split("\n").map((text, index)=>(
-               <span key={index} >
-                {text}
-                <br/>
-               </span> 
-          ))}
-           
-          </motion.h1>
+          <Hero/>
+     
+{/* <motion.h1 
+  variants={fadeInUp} 
+  className="text-5xl lg:text-8xl my-4 font-semibold tracking-tighter bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-orange-500 bg-clip-text text-transparent relative"
+>
+  <motion.img
+    src={logo}
+    alt="logo"
+    className="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 shadow-xl rounded-full bg-transparent transition-all duration-300"
+    whileHover={{
+      scale: 3, 
+      zIndex: 10,  
+      transition: { duration: 0.3 }  
+    }}
+    initial={{ scale: 1 }}  
+   
+  />
+</motion.h1> */}
           <motion.p variants={fadeInUp} className="mt-6 text-neutral-400 max-w-xl">
           {HERO_CONTENT.subHeading}
           </motion.p>

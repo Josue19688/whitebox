@@ -4,6 +4,7 @@ import { Header } from "@/components/public/Header"
 import { Footer } from "@/components/public/Footer"
 import { Loading } from "@/components/public/Loading";
 import { userAuthStore } from "@/stores/auth/auth.store";
+import { Gradiente } from "@/components/public/Gradiente";
 
 export default function PublicLayout() {
   const authStatus = userAuthStore(state=>state.status);
@@ -19,6 +20,7 @@ export default function PublicLayout() {
   }
   return (
     <>
+    <Gradiente/>
       <main className="text-sm text-neutral-300 antialiased">
         <Header />
         <Outlet />

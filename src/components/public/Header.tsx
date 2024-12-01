@@ -14,8 +14,16 @@ export const Header = () => {
 
   return (
     <nav className="fixed top-4 left-0 right-0 z-50 m-2">
-      <div className="text-neutral-500 bg-black/60 backdrop-blur-md max-w-7xl mx-auto px-4 py-3 flex justify-between items-center rounded-xl border border-neutral-800">
-        <img src={logo} alt="logo" className="w-16 h-16" />
+      <div className="text-neutral-400 bg-black/60 backdrop-blur-md max-w-7xl mx-auto px-4 py-3 flex justify-between items-center rounded-xl border border-neutral-800">
+     
+      <img 
+  src={logo} 
+  alt="logo" 
+  className="w-16 h-16 sm:w-24 sm:h-24 md:w-25 md:h-25 lg:w-28 lg:h-28 shadow-xl rounded-full bg-transparent" 
+/>
+
+
+
 
         {/* CENTER: LINKS (HIDDEN  ON MOBILE) */}
         <div className="hidden md:flex space-x-6">
@@ -31,9 +39,7 @@ export const Header = () => {
           <Link to='/blog' className="hover:text-neutral-200">
             Blog
           </Link>
-          <Link to='/private/articulo' className="hover:text-neutral-200">
-            Articulo
-          </Link>
+
         </div>
         {/* RIGHT: BUTTTONS ON MOBILE */}
         <div className="hidden md:flex space-x-4 items-center">

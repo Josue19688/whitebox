@@ -6,6 +6,7 @@ import {motion} from 'framer-motion'
 import { useEffect, useState } from "react"
 
 
+
 const containerVariants={
   hidden:{opacity:0},
   visible:{opacity:1, transition:{stranggerChildren:0.2}}
@@ -22,7 +23,7 @@ export const BlogPage = () => {
     const fetchArticlesPublic = useArticuloStore((state)=>state.fetchArticlesPublic);
 
     useEffect(() => {
-        console.log(articles)
+        
         fetchArticlesPublic();
       }, [fetchArticlesPublic]);
     
@@ -49,41 +50,43 @@ export const BlogPage = () => {
             <motion.div  variants={fadeInUp}
             className="max-w-7xl mx-auto px-4">
                 <div className="text-center mb-12 border-t border-neutral-800">
+                
+
                     <h2 className="text-3xl lg:text-5xl mt-20 tracking-tighter bg-gradient-to-t from-neutral-50 via-neutral-300 to-neutral-600 bg-clip-text text-transparent">
                         {HOW_IT_WORKS_CONTENT.sectionTitle}
-                    </h2>
+                    </h2> 
                     <p className="mt-4 text-neutral-400 max-w-xl mx-auto">
                         {HOW_IT_WORKS_CONTENT.sectionDescription}
                     </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {articles.map((articulo) => (
-                        <div key={articulo.id} className="bg-neutral-900 p-6 rounded-xl shadow-lg flex flex-col justify-between text-center">
-                            <div>
-                                <h3 className="text-xl font-semibold mb-4">{articulo.blocks[0]?.data.text}</h3>
-                                <p className="text-neutral-400 mb-4">{new Date(articulo.createdAt).toLocaleString()}</p>
-                            </div>
-                            <div className="flex justify-center">
-                                <img 
-                                src={articulo.blocks[1]?.data.file?.url} 
-                                alt={articulo.blocks[1]?.data.text} 
-                                className="rounded-lg" />
-                            </div>
-                            <div className="flex justify-between items-center mt-4">
-                                <div className="flex -space-x-2"></div>
-                                <Modal
-                        isOpen={!!currentArticuloId} // Controla si el modal está abierto
-                        onClose={() => setCurrentArticuloId(null)} // Cierra el modal
-                        articuloId={currentArticuloId} // Pasa el ID del artículo al modal
-                        />
-                                <button 
-                                 type="button"
-                                 onClick={() => handleOpenModal(articulo.id)}
-                                className="bg-gradient-to-r from-teal-400 to-blue-500 hover:from-pink-500 hover:to-orange-500 text-white py-2 px-4 rounded-lg">
-                                    Leer más...
-                                </button>
-                            </div>
-                        </div>
+                        <div className="card sm:card-side max-w-xs sm:max-w-sm bg-white shadow-md rounded-lg overflow-hidden flex flex-col sm:flex-row">
+                        <figure className="flex-shrink-0 w-full sm:w-1/3">
+                         <img
+                           src={articulo.blocks[1]?.data.file?.url}
+                           alt={articulo.blocks[1]?.data.text}
+                           className="object-cover w-full h-36 sm:h-36 md:h-44 "
+                         />
+                       </figure>
+                       <div className="card-body p-4 flex flex-col">
+                         <div>
+                           <h5 className="card-title text-sm sm:text-base font-medium text-gray-800 mb-2">{articulo.blocks[0]?.data.text}</h5>
+                           <p className="mb-3 text-xs text-gray-500">Publicado : {new Date(articulo.createdAt).toLocaleString()}</p> {/* Fecha de creación */}
+                         </div>
+                         
+                         {/* Botón "Leer más" */}
+                         <div className="mt-2">
+                           <button 
+                           type="button"
+                           onClick={() => handleOpenModal(articulo.id)}
+                           className="bg-gradient-to-r from-teal-400 to-blue-500 hover:from-pink-500 hover:to-orange-500 text-white w-full sm:w-auto py-1 px-2 font-medium rounded-md transition-colors text-xs sm:text-sm">
+                             Leer más
+                           </button>
+                         </div>
+                       </div>
+                     </div>
+                       
                     ))}
                 </div>
             </motion.div>
@@ -99,3 +102,4 @@ export const BlogPage = () => {
 
     )
 }
+
